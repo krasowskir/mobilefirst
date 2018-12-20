@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarToggler, Collapse, Input, InputGroup, InputGroupAddon } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarToggler, Collapse, Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 
 import "./header.scss";
 
@@ -45,7 +45,9 @@ export default class Header extends Component {
                   <InputGroup>
                     <Input placeholder="suche..." />
                     <InputGroupAddon addonType="append">
-                      <i className="fa fa-search" />
+                      <InputGroupText>
+                        <i className="fa fa-search" />
+                      </InputGroupText>
                     </InputGroupAddon>
                   </InputGroup>
                 </div>
