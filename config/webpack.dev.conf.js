@@ -4,7 +4,7 @@ var CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./index.js",
+  entry: path.resolve(__dirname, "../src/index.js"),
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js"
@@ -14,7 +14,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: "babel-loader",
-        exclude: "/node_modules/"
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -27,11 +27,11 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: "../dist"
+    contentBase: path.resolve(__dirname, "../dist")
   },
   devtool: "inline-source-maps",
   plugins: [
-    new CleanWebpackPlugin("../dist"),
+    new CleanWebpackPlugin(path.resolve(__dirname, "../dist")),
     new HtmlWebpackPlugin({
       template: "./index.html"
     })

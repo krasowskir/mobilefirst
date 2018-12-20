@@ -2,10 +2,10 @@
   "name": "mobilefirst",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx webpack-dev-server --open"
+    "dev": "npx webpack-dev-server --open --config ./config/webpack.dev.conf.js "
   },
   "author": "",
   "license": "ISC",

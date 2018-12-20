@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarToggler, Collapse } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, NavbarToggler, Collapse, Input, InputGroup, InputGroupAddon } from "reactstrap";
 
 import "./header.scss";
 
@@ -38,8 +38,18 @@ export default class Header extends Component {
             <NavItem>
               <NavLink href="/register">Login / Register</NavLink>
             </NavItem>
-            <div id="header-search">
-              <i className="fa fa-search" />
+            <NavLink href="#" id="search-trigger" />
+            <div id="header-search" className="container">
+              <div className="row">
+                <div className="col-lg-12">
+                  <InputGroup>
+                    <Input placeholder="suche..." />
+                    <InputGroupAddon addonType="append">
+                      <i className="fa fa-search" />
+                    </InputGroupAddon>
+                  </InputGroup>
+                </div>
+              </div>
             </div>
           </Nav>
         </Collapse>
