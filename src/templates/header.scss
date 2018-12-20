@@ -16,6 +16,13 @@
   .nav-item {
     padding-left: 10px;
     padding-right: 10px;
+
+    a {
+      &:hover {
+        text-transform: uppercase;
+        color: lighten($blue, 30%); //white;
+      }
+    }
   }
 
   #search-symbol {
