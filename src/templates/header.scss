@@ -3,4 +3,24 @@
 .header {
   margin: 1.5rem;
   background: $blue;
+
+  &__search {
+    width: 0 !important;
+
+    &:focus {
+      width: 300px !important;
+      transition: width 0.4s ease-in;
+    }
+  }
+
+  #search-symbol {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  span {
+    height: 38px;
+    white-space: nowrap;
+  }
 }

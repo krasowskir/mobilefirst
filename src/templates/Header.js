@@ -20,39 +20,42 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Navbar className="header">
+      <Navbar className="header" expand="lg">
         <NavbarBrand href="/">
           <h1 className="caption-nav">Agger</h1>
         </NavbarBrand>
-        <NavbarToggler onClick={this.toggleOpen} />
+        <NavbarToggler onClick={this.toggleOpen} className="navbar-dark" />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav navbar>
+          <Nav navbar className="ml-auto">
             <NavItem>
               <NavLink href="/">
-                About <i class="fas fa-home" />
+                <span>
+                  About <i className="fas fa-home" />
+                </span>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/contact">Contact</NavLink>
+              <NavLink href="/contact">
+                <span>
+                  Contact <i class="fas fa-phone" />
+                </span>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/register">Login / Register</NavLink>
+              <NavLink href="/register">
+                <span>
+                  Login / Register <i class="fas fa-sign-in-alt" />
+                </span>
+              </NavLink>
             </NavItem>
-            <NavLink href="#" id="search-trigger" />
-            <div id="header-search" className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <InputGroup>
-                    <Input placeholder="suche..." />
-                    <InputGroupAddon addonType="append">
-                      <InputGroupText>
-                        <i className="fa fa-search" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                  </InputGroup>
-                </div>
-              </div>
-            </div>
+            <InputGroup id="header-search">
+              <Input className="header__search" />
+              <InputGroupAddon addonType="append" id="search-symbol" size="sm">
+                <InputGroupText size="sm">
+                  <i className="fa fa-search" />
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
           </Nav>
         </Collapse>
       </Navbar>
