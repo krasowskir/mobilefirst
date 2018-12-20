@@ -37,25 +37,27 @@ export default class Header extends Component {
             <NavItem>
               <NavLink href="/contact">
                 <span>
-                  Contact <i class="fas fa-phone" />
+                  Contact <i className="fas fa-phone" />
                 </span>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/register">
                 <span>
-                  Login / Register <i class="fas fa-sign-in-alt" />
+                  Login / Register <i className="fas fa-sign-in-alt" />
                 </span>
               </NavLink>
             </NavItem>
-            <InputGroup id="header-search">
-              <Input className="header__search" />
-              <InputGroupAddon addonType="append" id="search-symbol" size="sm">
-                <InputGroupText size="sm">
-                  <i className="fa fa-search" />
-                </InputGroupText>
-              </InputGroupAddon>
-            </InputGroup>
+            <NavItem>
+              <InputGroup id="header-search">
+                <Input className="header__search" />
+                <InputGroupAddon addonType="append" id="search-symbol" size="sm">
+                  <InputGroupText size="sm">
+                    <i className="fa fa-search" />
+                  </InputGroupText>
+                </InputGroupAddon>
+              </InputGroup>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
