@@ -10,13 +10,18 @@ $light-grey: #b6b6b6;
 $link-color: $blue;
 $link-hover-color: $grey;
 
-//$border-focus: $blue;
-$input-btn-focus-color: $blue;
-// $secondary: $blue;
-
 // text
 $primary-text: $black;
 $light-text: $grey;
 $loud-text: $black;
 $inverse-text: $white;
 $heading-text: $dark-blue;
+
+$main-font-size: 1.25rem;
+
+//$border-focus: $blue;
+$input-btn-focus-color: $blue;
+// $secondary: $blue;
+
+//spaces
+$main-space: 0.75rem;
