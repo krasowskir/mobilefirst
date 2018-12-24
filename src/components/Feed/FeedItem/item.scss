@@ -1,0 +1,12 @@
+@import "../../../../public/styles/scss/app.scss";
+
+.item {
+  margin: 10px !important;
+}
+
+.post {
+  padding: 1.5rem;
+  background-color: $light-grey;
+  border: 2px solid $black;
+  margin: 0.5rem 0;
+}

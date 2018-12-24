@@ -1,0 +1,21 @@
+@import "../../../public/styles/scss/app.scss";
+
+.feed {
+  &__content {
+    height: 600px;
+    overflow: auto;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: $grey solid 2px;
+    margin: 1rem;
+    padding: 1rem;
+
+    &__badge {
+      margin-left: 1.5rem;
+      font-size: 1.25rem;
+    }
+  }
+}
