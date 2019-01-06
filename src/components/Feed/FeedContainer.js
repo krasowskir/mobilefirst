@@ -29,12 +29,12 @@ export default class FeedContainer extends Component {
         <div className="well">
           <h4>Aggegate your feeds with Agger</h4>
         </div>
-        <div className="feed__content">{this.state.data != null && this.state.data.map(item => <FeedItem vorname={item.vorname} />)}</div>
+        <div className="feed__content">{this.state.data != null && this.state.data.map(item => <FeedItem {...item} />)}</div>
         <div className="feed__footer">
           <p>
             <small className="float-left">Feed pages </small>
             <Badge className="feed__footer__badge" color="success">
-              5
+              {this.state.data != null && this.state.data.length}
             </Badge>
           </p>
 
