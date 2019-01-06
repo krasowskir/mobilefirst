@@ -20,7 +20,8 @@
     a {
       &:hover {
         text-transform: uppercase;
-        color: lighten($blue, 30%); //white;
+        color: white !important; //lighten($blue, 30%);
+        cursor: pointer;
       }
     }
   }

@@ -39,6 +39,8 @@ export default class Header extends Component {
     });
   }
 
+  onClickSearch() {}
+
   render() {
     return (
       <Navbar className="header" expand="lg">
