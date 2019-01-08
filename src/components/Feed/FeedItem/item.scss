@@ -6,12 +6,33 @@
 
 .post {
   padding: 1.5rem;
-  background-color: whitesmoke;
-  border: 1px solid $grey;
-  margin: 0.5rem 0;
+  background-color: #fcfcfc;
+  border: 0.25px solid $grey;
+  margin: 0.25rem 0;
 
   &__headline {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0 !important;
+  }
+
+  &__id {
+    position: absolute;
+    margin-top: -6px;
+    margin-left: 5px;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+
+    &__img {
+      width: 200px;
+      height: 40px;
+    }
+  }
+
+  hr {
+    margin-top: 2rem;
   }
 }
