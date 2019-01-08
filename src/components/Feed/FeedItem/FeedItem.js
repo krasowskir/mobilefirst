@@ -4,6 +4,7 @@ import unitedStates from "../../../../public/imgs/united-states.svg";
 import france from "../../../../public/imgs/france.svg";
 import ireland from "../../../../public/imgs/ireland.svg";
 import japan from "../../../../public/imgs/japan.svg";
+import star from "../../../../public/imgs/star.svg";
 import "./item.scss";
 
 function getDurchschnitt(grades) {
@@ -19,7 +20,7 @@ function getDurchschnitt(grades) {
 export default ({ name, restaurant_id, address, grades, cuisine, borough }) => {
   let stars = new Array();
   for (let i = 0; i < getDurchschnitt(grades); i++) {
-    stars.push(<i className="far fa-star" />);
+    stars.push(<img src={star} className="post__star" />);
   }
 
   let mycuisine = null;
