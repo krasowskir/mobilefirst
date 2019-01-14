@@ -1,9 +1,13 @@
 import React from "react";
+import shortId from "short-id";
 import italy from "../../../../public/imgs/italy.svg";
 import unitedStates from "../../../../public/imgs/united-states.svg";
 import france from "../../../../public/imgs/france.svg";
 import ireland from "../../../../public/imgs/ireland.svg";
 import japan from "../../../../public/imgs/japan.svg";
+import greece from "../../../../public/imgs/greece.svg";
+import spain from "../../../../public/imgs/spain.svg";
+import latin from "../../../../public/imgs/puerto-rico.svg";
 import star from "../../../../public/imgs/star.svg";
 import "./item.scss";
 
@@ -20,7 +24,7 @@ function getDurchschnitt(grades) {
 export default ({ name, restaurant_id, address, grades, cuisine, borough }) => {
   let stars = new Array();
   for (let i = 0; i < getDurchschnitt(grades); i++) {
-    stars.push(<img src={star} className="post__star" />);
+    stars.push(<img src={star} key={shortId.generate()} className="post__star" />);
   }
 
   let mycuisine = null;
@@ -44,34 +48,48 @@ export default ({ name, restaurant_id, address, grades, cuisine, borough }) => {
     case "Japanese":
       mycuisine = japan;
       break;
+
+    case "Latin (Cuban, Dominican, Puerto Rican, South & Central American)":
+      mycuisine = latin;
+      break;
+
+    case "Spanish":
+      mycuisine = spain;
+      break;
+
+    case "Greek":
+      mycuisine = greece;
+      break;
   }
   return (
-    <div className="row item">
-      <div className="col-lg-12">
-        <div className="post">
-          <div className="post__headline">
-            <h4>
-              <a href="#">{name}</a>
-            </h4>
-            <span>{stars}</span>
-          </div>
-          <small className="post__id">{restaurant_id}</small>
-          <hr />
+    <li>
+      <div className="row item">
+        <div className="col-lg-12">
+          <div className="post">
+            <div className="post__headline">
+              <h4>
+                <a href="#">{name}</a>
+              </h4>
+              <span>{stars}</span>
+            </div>
+            <small className="post__id">{restaurant_id}</small>
+            <hr />
 
-          <div className="post__body">
-            <small>
-              <address>
-                {address.street} {address.building}
-                <br />
-                {borough}
-                {","}
-                {address.zipcode}
-              </address>
-            </small>
-            {<img src={mycuisine} className="post__body__img" />}
+            <div className="post__body">
+              <small>
+                <address>
+                  {address.street} {address.building}
+                  <br />
+                  {borough}
+                  {","}
+                  {address.zipcode}
+                </address>
+              </small>
+              {<img src={mycuisine} className="post__body__img" />}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };

@@ -26,6 +26,7 @@
     "react-router-dom": "^4.3.1",
     "reactstrap": "^6.5.0",
     "sass-loader": "^7.1.0",
+    "short-id": "0.1.0-1",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.27.1",

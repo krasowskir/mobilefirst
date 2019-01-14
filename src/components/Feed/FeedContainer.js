@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import FeedItem from "./FeedItem/FeedItem";
 import { Button, Badge } from "reactstrap";
-import Pagination from "./Pagination/Pagination";
+import MyPagination from "../MyPagination/MyPagination";
+import shortId from "short-id";
 
 import "./feed.scss";
 
@@ -9,15 +10,30 @@ export default class FeedContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
+      data: null,
+      amount: null,
+      pageSize: null
     };
+    this.computePageLength = this.computePageLength.bind(this);
   }
 
   componentDidMount() {
     console.log("neue props: " + JSON.stringify(this.props.data));
     this.setState({
-      data: this.props.data
+      data: this.props.data,
+      amount: this.props.amount,
+      pageSize: this.props.pageSize
     });
+  }
+
+  computePageLength(amount, limit) {
+    console.log("amount: " + amount + " limit: " + limit);
+    let base = amount / limit;
+    if (base === amount * limit) {
+      return base;
+    } else {
+      return base + 1;
+    }
   }
 
   render() {
@@ -27,18 +43,23 @@ export default class FeedContainer extends Component {
     return (
       <div className="feed container">
         <div className="well">
-          <h4>Aggegate your feeds with Agger</h4>
+          <h4>Richard's Restaurant Suche</h4>
         </div>
-        <div className="feed__content">{this.state.data != null && this.state.data.map(item => <FeedItem {...item} />)}</div>
+        <ul className="feed__content">{this.state.data != null && this.state.data.map(item => <FeedItem {...item} key={shortId.generate()} />)}</ul>
+        <hr />
         <div className="feed__footer">
           <p>
             <small className="float-left">Feed pages </small>
-            <Badge className="feed__footer__badge" color="success">
-              {this.state.data != null && this.state.data.length}
-            </Badge>
           </p>
+          <Badge className="feed__footer__badge" color="success">
+            {this.state.data != null && this.props.amount}
+          </Badge>
 
-          <Pagination size={5} className="float-right" />
+          <MyPagination
+            size={this.computePageLength(this.state.amount, this.state.pageSize)}
+            updateLimit={this.props.updateLimit}
+            updatePage={this.props.updatePage}
+          />
         </div>
       </div>
     );
