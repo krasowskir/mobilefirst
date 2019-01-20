@@ -46,9 +46,6 @@ export default class FeedContainer extends Component {
   }
 
   render() {
-    console.log("data: " + JSON.stringify(this.props.data));
-    console.log("laength: " + this.props.data.length);
-
     return (
       <div className="feed container">
         <div className="well">
@@ -68,6 +65,7 @@ export default class FeedContainer extends Component {
             size={this.computePageLength(this.state.amount, this.state.pageSize)}
             updateLimit={this.props.updateLimit}
             updatePage={this.props.updatePage}
+            page={this.props.page}
           />
         </div>
       </div>

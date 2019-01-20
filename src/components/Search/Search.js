@@ -3,6 +3,7 @@ import FeedContainer from "../Feed/FeedContainer";
 import Sidebar from "../Sidebar/Sidebar";
 import SearchInput from "./SearchInput/SearchInput";
 import fetch from "isomorphic-fetch";
+import deepEqual from "deep-equal";
 
 export default class Search extends Component {
   constructor(props) {
@@ -32,9 +33,16 @@ export default class Search extends Component {
     });
   }
   setPage(value) {
-    console.log("page valjue: " + value);
+    let { page } = this.state;
+
+    if (typeof value == "number") {
+      console.log("page valjue: " + value);
+      page = value;
+    } else {
+      value == "next" ? page++ : page--;
+    }
     this.setState({
-      page: value
+      page
     });
   }
   componentDidUpdate() {
@@ -42,20 +50,28 @@ export default class Search extends Component {
   }
   shouldComponentUpdate(nextProps, nextState) {
     let { page, limit, searched, foundItems } = this.state;
-    console.log("aktualle items: " + foundItems);
-    console.log("nextItems: " + nextState.foundItems);
-    if (nextState == null) {
-      return false;
-    }
-    if (nextState.page !== page || nextState.limit !== limit || nextState.searched !== searched ) {
+    if (nextState.page !== page) {
+      console.log("page aktualisiert...");
       return true;
-    } else {
-      return false;
     }
+    if (nextState.limit !== limit) {
+      console.log("page aktualisiert...");
+      return true;
+    }
+    if (nextState.searched !== searched) {
+      console.log("page aktualisiert...");
+      return true;
+    }
+    if (foundItems !== null) {
+      if (!deepEqual(nextState.foundItems, foundItems)) {
+        return true;
+      }
+    }
+    console.log("nichts von page, limit oder searched aber aktualisiert");
+    return false;
   }
 
   search() {
-    console.log("params: " + this.state.searchWord + ":" + limit + ":" + page);
     let page = this.state.page;
     let limit = this.state.limit;
     let searchWord = this.state.searchWord;
@@ -87,6 +103,7 @@ export default class Search extends Component {
                 amount={this.state.fullAmount}
                 updateLimit={this.setLimit}
                 updatePage={this.setPage}
+                page={this.state.page}
               />
             ) : (
               <SearchInput inputChange={this.inputChange} search={this.search} />
