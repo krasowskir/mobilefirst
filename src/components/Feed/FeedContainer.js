@@ -25,6 +25,15 @@ export default class FeedContainer extends Component {
       pageSize: this.props.pageSize
     });
   }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let { data, amount, pageSize } = prevState;
+    if (prevState.data !== nextProps.data) {
+      console.log("derived state");
+      return { data: nextProps.data, amount: nextProps.amount, pageSize: nextProps.pageSize };
+    } else {
+      return null;
+    }
+  }
 
   computePageLength(amount, limit) {
     console.log("amount: " + amount + " limit: " + limit);

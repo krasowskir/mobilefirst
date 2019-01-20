@@ -37,26 +37,29 @@ export default class Search extends Component {
       page: value
     });
   }
+  componentDidUpdate() {
+    this.search();
+  }
   shouldComponentUpdate(nextProps, nextState) {
-    let { page, limit, searchWord, searched } = this.state;
-    if (nextState.page !== page || nextState.limit !== limit || nextState.searchWord !== searchWord || nextState.searched !== searched) {
+    let { page, limit, searched, foundItems } = this.state;
+    console.log("aktualle items: " + foundItems);
+    console.log("nextItems: " + nextState.foundItems);
+    if (nextState == null) {
+      return false;
+    }
+    if (nextState.page !== page || nextState.limit !== limit || nextState.searched !== searched ) {
       return true;
     } else {
       return false;
     }
   }
 
-  search(searchWord, limit, page) {
-    console.log("params: " + searchWord + ":" + limit + ":" + page);
-    if (!page) {
-      page = this.state.page;
-    }
-    if (!limit) {
-      limit = this.state.limit;
-    }
-    if (searchWord.length !== 0) {
-      searchWord = this.state.searchWord;
-    }
+  search() {
+    console.log("params: " + this.state.searchWord + ":" + limit + ":" + page);
+    let page = this.state.page;
+    let limit = this.state.limit;
+    let searchWord = this.state.searchWord;
+
     console.log("params after: " + searchWord + ":" + limit + ":" + page);
     fetch("http://localhost:8080/search/" + searchWord + "?limit=" + limit + "&page=" + page)
       .then(response => {
